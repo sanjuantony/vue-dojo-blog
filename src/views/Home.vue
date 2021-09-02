@@ -6,12 +6,12 @@
   <input type="text" v-model="name">
 
   <h1>Using Computed Properties of Composition API</h1>
-  Search Name: <input type="text" v-model="searchTerm">
-  <div v-for="name in matchingName"> {{ name }} </div>
+  <p>Search Name: <input type="text" v-model="searchTerm"> </p>
+  <div v-for="name in matchingName" :key="name"> {{ name }} </div>
 </template>
 
 <script>
-import {computed, ref} from 'vue'
+import {computed, ref, watch, watchEffect} from 'vue'
   export default {
     name: 'Home',
     setup() {
@@ -34,6 +34,15 @@ import {computed, ref} from 'vue'
 
       const searchTerm = ref('')
       const names = ref(['Sanju', 'Shincy', 'Johann', 'Julia', 'Bobby', 'Dimple', 'Isabelle','Irene', 'David'])
+
+      watch(searchTerm, () => {
+          //console.log(searchTerm.value)
+        }
+      )
+
+      watchEffect(()=>{
+        console.log("watchEffect() Triggered", searchTerm.value)
+      })
 
       const matchingName = computed(() => {
         return names.value.filter((name) => name.includes(searchTerm.value))
