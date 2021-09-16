@@ -18,15 +18,16 @@ import {ref} from 'vue'
       let name = "Sanju"
       let age = 40
 
+
       const handleClick = () => {
         console.log(para)
         console.log("_rawValue: "+para._rawValue)
         console.log("innerText: "+para.value.innerText)
         para.value.classList.add("test")
-        // console.log(para_another, para_another.value)
       }
 
-      return {name, age, handleClick, para}
+      return { name, age, handleClick, para }
+      // return {name, age, handleClick, para}
     }
   }
 </script>
